@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require("axios");
 const jwt = require("jsonwebtoken");
 
-const API = "/api";
+const API = process.env.BASE_URL + "/api";
 
 router.get("/login", (req, res) => {
     res.render("auth/login");

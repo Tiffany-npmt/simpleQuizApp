@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios");
 
-const API = "/api";
+const API = process.env.BASE_URL + "/api";
 
 function requireLogin(req, res, next) {
     if (!req.session.token) {
