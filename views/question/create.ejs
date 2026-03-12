@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Create New Question</title>
+</head>
+
+<body>
+    <%- include("../partials/header") %>
+
+        <div class="container">
+
+            <h2>Create Question</h2>
+
+            <form method="POST" action="/questions/create">
+
+                <input name="text" placeholder="Question" required>
+
+                <input name="o1" placeholder="Option 1" required>
+                <input name="o2" placeholder="Option 2" required>
+                <input name="o3" placeholder="Option 3" required>
+
+                <input name="correct" type="number" min="0" max="2" placeholder="Correct index">
+
+                <input name="keywords" placeholder="math,simple,capital">
+
+                <button class="btn btn-success">Create</button>
+
+                <a class="btn btn-primary" href="/questions%>">Back</a>
+
+            </form>
+
+        </div>
+
+</body>
+
+</html>

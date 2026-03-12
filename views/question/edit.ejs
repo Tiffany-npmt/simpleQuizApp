@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/style.css">
+
+    <title>Update Question</title>
+</head>
+
+<body>
+    <%- include("../partials/header") %>
+
+    <div class="container">
+
+        <h2>Edit Question</h2>
+
+        <form method="POST">
+
+            <div class="form-group">
+                <textarea name="text" rows="3" required><%= question.text %></textarea>
+            </div>
+
+            <div class="form-group">
+                <input name="o1" value="<%= question.options[0] %>" required>
+            </div>
+
+            <div class="form-group">
+                <input name="o2" value="<%= question.options[1] %>" required>
+            </div>
+
+            <div class="form-group">
+                <input name="o3" value="<%= question.options[2] %>" required>
+            </div>
+
+            <div class="form-group">
+                <input name="correct" type="number" min="0" max="2" value="<%= question.correctAnswerIndex %>" required>
+            </div>
+
+            <div class="form-group">
+                <input name="keywords" value="<%= question.keywords.join(',') %>"
+                    placeholder="Keywords (comma separated)">
+            </div>
+
+            <button class="btn btn-success">Update</button>
+
+            <a class="btn btn-primary" href="/questions">Back</a>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

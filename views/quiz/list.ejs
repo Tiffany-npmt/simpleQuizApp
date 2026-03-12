@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Quiz List</title>
+</head>
+
+<body>
+    <%- include("../partials/header") %>
+        <div class="container">
+
+            <h1>Quiz List</h1>
+
+            <% if(user && user.admin) { %>
+                <a href="/quizzes/create" class="btn btn-success">+ Create Quiz</a>
+                <% } %>
+
+                    <ul class="list">
+
+                        <% quizzes.forEach(quiz=> { %>
+
+                            <li class="list-item">
+
+                                <span class="quiz-title">
+                                    <%= quiz.title %>
+                                </span>
+
+                                <div class="actions">
+                                    <% if(!user || !user.admin) { %>
+                                        <a href="/quizzes/<%= quiz._id %>" class="btn btn-primary">Start</a>
+                                        <a class="btn btn-secondary big" href="/questions">Question List</a>
+                                        <% } %>
+                                            <% if(user && user.admin) { %>
+
+                                                <a href="/quizzes/details/<%= quiz._id %>" class="btn btn-secondary">
+                                                    Details
+                                                </a>
+
+                                                <a href="/quizzes/edit/<%= quiz._id %>" class="btn btn-success">
+                                                    Edit
+                                                </a>
+
+                                                <form action="/quizzes/delete/<%= quiz._id %>" method="POST"
+                                                    class="quiz-action"
+                                                    onsubmit="return confirm('Are you sure to detele this quiz?')">
+                                                    <button class="btn btn-danger">Delete</button>
+                                                </form>
+
+                                                <% } %>
+
+                                </div>
+
+                            </li>
+
+                            <% }) %>
+
+                    </ul>
+
+        </div>
+</body>
+
+</html>

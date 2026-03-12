@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Result</title>
+
+</head>
+
+<body>
+    <%- include("../partials/header") %>
+
+        <div class="container">
+
+            <h1>Quiz Result</h1>
+
+            <h2>
+                You answered <%= correct %> / <%= total %> correctly
+            </h2>
+            <br>
+
+            <a href="/quizzes" class="btn" style="color: black;">Back to Quiz List</a>
+
+        </div>
+</body>
+
+</html>

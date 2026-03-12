@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/style.css">
+
+    <title>Quiz Details</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>
+            <%= quiz.title %>
+        </h1>
+
+        <p>
+            <%= quiz.description %>
+        </p>
+
+        <div class="actions">
+            <a class="btn btn-primary" href="/quizzes">Back</a>
+            <a class="btn btn-success" href="/quizzes/<%= quiz._id %>/question/create">Add Question</a>
+            <a class="btn btn-secondary big" href="/questions">Question List</a>
+        </div>
+
+        <hr>
+
+        <h2>Questions</h2>
+
+        <% if (questions.length===0) { %>
+            <p>No questions yet.</p>
+            <% } %>
+
+                <% questions.forEach(q=> { %>
+
+                    <div class="card">
+
+                        <h3>
+                            <%= q.text %>
+                        </h3>
+
+                        <ul>
+                            <% q.options.forEach(o=> { %>
+                                <li>
+                                    <%= o %>
+                                </li>
+                                <% }) %>
+                        </ul>
+                    </div>
+
+                    <% }) %>
+
+    </div>
+
+</body>
+
+</html>

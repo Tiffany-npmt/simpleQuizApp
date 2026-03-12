@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/style.css">
+
+    <title>Add Question</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Add Question</h2>
+
+    <form method="POST" action="/quizzes/<%= quizId %>/question/create">
+
+        <div class="form-group">
+            <input name="text" placeholder="Question text" required>
+        </div>
+
+        <div class="form-group">
+            <input name="o1" placeholder="Option 1" required>
+        </div>
+
+        <div class="form-group">
+            <input name="o2" placeholder="Option 2" required>
+        </div>
+
+        <div class="form-group">
+            <input name="o3" placeholder="Option 3" required>
+        </div>
+
+        <div class="form-group">
+            <input name="correct" type="number" min="0" max="2"
+                placeholder="Correct index (0–2)" required>
+        </div>
+
+        <div class="form-group">
+            <input name="keywords" placeholder="Keywords (math, logic...)">
+        </div>
+
+        <button class="btn btn-success">Create</button>
+
+        <a class="btn btn-primary" href="/quizzes/details/<%= quizId %>">Back</a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

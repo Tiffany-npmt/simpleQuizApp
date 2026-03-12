@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/style.css">
+
+    <title>Question List</title>
+</head>
+
+<body>
+    <%- include("../partials/header") %>
+    
+    <div class="container">
+
+        <h1>Questions</h1>
+
+        <div style="margin-bottom:15px">
+            <a class="btn btn-primary" href="/quizzes">Back to Quiz</a>
+            <a class="btn btn-success" href="/questions/create">Create New Question</a>
+        </div>
+
+        <form class="search-form">
+            <input name="keyword" placeholder="Search keyword...">
+            <button class="btn btn-primary">Search</button>
+        </form>
+
+        <% if(questions.length===0){ %>
+            <p>No questions found.</p>
+            <% } %>
+
+                <% questions.forEach(q=> { %>
+
+                    <div class="card">
+
+                        <h3>
+                            <%= q.text %>
+                        </h3>
+
+                        <p>
+                            <strong>Options:</strong>
+                            <%= q.options.join(" , ") %>
+            </p>
+
+            <div class=" actions">
+
+                                <a class="btn btn-primary" href="/questions/edit/<%= q._id %>">Edit</a>
+
+                                <a class="btn btn-danger" href="/questions/delete/<%= q._id %>"
+                                    onclick="return confirm('Delete this question?')">
+                                    Delete
+                                </a>
+
+                    </div>
+
+    </div>
+
+    <% }) %>
+
+        </div>
+
+        <div style="margin-top:20px; text-align:center">
+
+            <% if(page> 1){ %>
+                <a class="btn btn-secondary" href="/questions?page=<%= page-1 %>&keyword=<%= keyword %>">
+                    ⬅ Previous
+                </a>
+                <% } %>
+
+                    <span style="margin:0 10px">Page <%= page %></span>
+
+                    <% if(questions.length===5){ %>
+                        <a class="btn btn-secondary" href="/questions?page=<%= page+1 %>&keyword=<%= keyword %>">
+                            Next ➡
+                        </a>
+                        <% } %>
+
+        </div>
+
+
+</body>
+
+</html>
